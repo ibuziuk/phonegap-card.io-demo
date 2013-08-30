@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Card Reader example</title>
+	<script src="jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="CardIOPGPlugin.js"></script> 
+  </head>
+  <body>
+	<h1>Scan Example</h1>
+	<p><button id='scanBtn'>Scan now</button></p>
+	<script type="text/javascript">
+	
+	
+	        //Your response array contain these fields
+	    // redacted_card_number, card_number, expiry_month,expiry_year, cvv, zip
+	
+	    var onCardIOComplete = function(response) {
+	        navigator.notification.alert("card.io scan completed");
+	        navigator.notification.alert(JSON.stringify(response));
+	
+	    };
+	
+	    var onCardIOCancel = function() {
+	         navigator.notification.alert("card.io scan cancelled");
+	    };
+	
+	    $('#scanBtn').click(function() {
+	        window.plugins.CardIOPGPlugin.scan(onCardIOComplete, onCardIOCancel);
+	    });
+	</script>
+  </body>
+</html>
