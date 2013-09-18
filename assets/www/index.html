@@ -11,8 +11,13 @@
 	<p><button id='scanBtn'>Scan now</button></p>
 	<script type="text/javascript">
 	
-	
-	        //Your response array contain these fields
+		document.addEventListener("deviceready", onDeviceReady, false);
+		
+		function onDeviceReady() {
+        	navigator.splashscreen.hide();
+    	}
+		
+	    //Your response array contain these fields
 	    // redacted_card_number, card_number, expiry_month,expiry_year, cvv, zip
 	
 	    var onCardIOComplete = function(response) {
